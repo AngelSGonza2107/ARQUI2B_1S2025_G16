@@ -1,4 +1,3 @@
-// src/components/DateFilter.jsx
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -39,8 +38,9 @@ export default function DateFilter({ onChange }) {
       return;
     }
 
-    const startDateTime = `${format(new Date(startDate.getTime() - startDate.getTimezoneOffset() * 60000), "yyyy-MM-dd")} ${startTime}:00`;
-    const endDateTime = `${format(new Date(endDate.getTime() - endDate.getTimezoneOffset() * 60000), "yyyy-MM-dd")} ${endTime}:00`;
+    // Formatear las fechas en el formato YYYY-MM-DD HH:MM:SS
+    const startDateTime = `${format(startDate, "yyyy-MM-dd")} ${startTime}:00`;
+    const endDateTime = `${format(endDate, "yyyy-MM-dd")} ${endTime}:00`;
 
     onChange({ sensor: selectedSensor, start: startDateTime, end: endDateTime });
     setError(null);

@@ -2,9 +2,14 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area } from "recharts";
 import { motion } from "framer-motion";
 import { format, parseISO } from "date-fns";
-
+//import de math
 
 export default function SensorChart({ data, title, color, isCritical }) {
+  // Invertir el orden de los datos para que el más viejo esté a la izquierda
+  const reversedData = [...data].reverse();
+  const maxValue = Math.max(...reversedData.map((d) => d.value));
+  // Agregar un 30% de margen al valor máximo
+  const yAxisDomain = [0, Math.round((maxValue *1.3)/10)*10]; // Dominio de 0 a maxValue + 30%
   return (
     <motion.div
       className="w-full"
@@ -13,7 +18,7 @@ export default function SensorChart({ data, title, color, isCritical }) {
       transition={{ duration: 0.5 }}
     >
       <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={data}>
+        <LineChart data={reversedData}>
           <defs>
             <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor={color} stopOpacity={0.4} /> {/* Más visible */}
@@ -25,7 +30,10 @@ export default function SensorChart({ data, title, color, isCritical }) {
             tick={{ fill: "#6B7280" }}
             tickFormatter={(time) => format(parseISO(time), "HH:mm:ss")} // Mostrar segundos
           />
-          <YAxis tick={{ fill: "#6B7280" }} />
+          <YAxis 
+          tick={{ fill: "#6B7280" }} 
+          domain = {yAxisDomain}
+          />
           <Tooltip
             contentStyle={{
               backgroundColor: "#FFF",
@@ -48,7 +56,7 @@ export default function SensorChart({ data, title, color, isCritical }) {
             dataKey="value"
             stroke={color}
             strokeWidth={isCritical ? 4 : 2}
-            dot={{ r: 4 }}
+            dot={{ r: 1 }}
           />
         </LineChart>
       </ResponsiveContainer>

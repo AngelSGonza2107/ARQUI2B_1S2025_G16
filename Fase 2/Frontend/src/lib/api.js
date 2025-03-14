@@ -1,5 +1,5 @@
 // src/lib/api.js
-const API_BASE_URL = "http://localhost:5000"; // Cambia esto si tu API está en otro lugar
+const API_BASE_URL = "http://192.168.1.4:5000"; // Cambia esto si tu API está en otro lugar
 
 export const fetchLiveData = async () => {
   const response = await fetch(`${API_BASE_URL}/datos`);

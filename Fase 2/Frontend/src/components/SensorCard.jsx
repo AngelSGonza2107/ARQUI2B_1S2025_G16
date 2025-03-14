@@ -1,5 +1,6 @@
 // src/components/SensorCard.jsx
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, ArrowUp, ArrowDown, Thermometer, Droplets, Sun, Gauge, Wind, Ruler, DoorOpen } from "lucide-react";
 
@@ -14,7 +15,45 @@ const sensorIcons = {
   puerta: <DoorOpen className="w-6 h-6 text-gray-500" />,
 };
 
+// Función para dividir un número en dígitos, incluyendo el punto decimal
+const splitNumberIntoDigits = (number) => {
+  return String(number).split("");
+};
+
+// Componente para animar un dígito
+const AnimatedDigit = ({ digit, newDigit, direction }) => {
+  return (
+    <motion.span
+      key={newDigit}
+      initial={{ y: direction === "up" ? -8 : 8, opacity: 0.5 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        type: "spring", // Usamos un efecto de resorte
+        stiffness: 400, // Rigidez del resorte
+        damping: 10, // Amortiguación para un efecto más suave
+        mass: 0.4, // Masa del objeto animado
+      }}
+      className="inline-block"
+    >
+      {newDigit}
+    </motion.span>
+  );
+};
+
 export default function SensorCard({ name, value, unit, trend, isCritical, isWarning }) {
+  const [previousValue, setPreviousValue] = useState(value);
+  const [digits, setDigits] = useState(splitNumberIntoDigits(value));
+  const [direction, setDirection] = useState("up"); // "up" o "down"
+
+  useEffect(() => {
+    if (value !== previousValue) {
+      // Determinar la dirección de la animación
+      setDirection(value > previousValue ? "up" : "down");
+      setDigits(splitNumberIntoDigits(value));
+      setPreviousValue(value);
+    }
+  }, [value, previousValue]);
+
   const displayName = {
     temperatura: "Temperatura",
     humedad: "Humedad",
@@ -29,7 +68,7 @@ export default function SensorCard({ name, value, unit, trend, isCritical, isWar
   // Personalización para "luz" y "puerta"
   const customDisplay = {
     luz: value === 1 ? "Luz detectada 🌞" : "No hay luz 🌑",
-    puerta: value === 1 ? "Puerta abierta 🚪" : "Puerta cerrada 🔒",
+    puerta: value === "1" ? "Puerta abierta 🚪" : "Puerta cerrada 🔒"
   };
 
   return (
@@ -57,7 +96,19 @@ export default function SensorCard({ name, value, unit, trend, isCritical, isWar
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold text-gray-900">
-            {customDisplay[name] || `${value} ${unit}`}
+            {customDisplay[name] || (
+              <span className="flex">
+                {digits.map((digit, index) => (
+                  <AnimatedDigit
+                    key={index}
+                    digit={digits[index]}
+                    newDigit={digit}
+                    direction={direction}
+                  />
+                ))}
+                <span>{unit}</span>
+              </span>
+            )}
           </p>
           {trend && name !== "luz" && name !== "puerta" && (
             <div className="flex items-center gap-1 mt-2 text-sm">

@@ -160,7 +160,7 @@ const getSensorDisplayName = (sensor) => {
     calidadAire: "Calidad del Aire",
     corriente: "Corriente Eléctrica",
     distancia: "Distancia",
-    distancia_puerta: "Estado de la Puerta",
+    distancia_puerta: "Distancia de la Puerta",
     puerta: "Estado de la Puerta",
   };
   return names[sensor] || sensor;
@@ -170,9 +170,9 @@ const getSensorDisplayName = (sensor) => {
 const isCritical = (sensor, value) => {
   const limits = {
     temperatura: 35, // Ejemplo: 35°C es crítico
-    humedad: 80, // Ejemplo: 80% es crítico
+    humedad: 70, // Ejemplo: 80% es crítico
     corriente: 15, // Ejemplo: 15A es crítico
-    calidadAire: 600, // Ejemplo: 600
+    calidadAire: 500, // Ejemplo: 600
   };
   return value >= (limits[sensor] || Infinity);
 };
@@ -180,9 +180,9 @@ const isCritical = (sensor, value) => {
 const isWarning = (sensor, value) => {
   const limits = {
     temperatura: 30, // Ejemplo: 30°C es advertencia
-    humedad: 70, // Ejemplo: 70% es advertencia
+    humedad: 60, // Ejemplo: 70% es advertencia
     corriente: 10, // Ejemplo: 10A es advertencia
-    calidadAire: 400, // Ejemplo: 400
+    calidadAire: 300, // Ejemplo: 400
   };
   return value >= (limits[sensor] || Infinity);
 };
