@@ -1,4 +1,4 @@
-# 🌐 Proyecto 2 - Sistema Inteligente de Monitoreo Ambiental mediante IoT
+# 🌐 Proyecto - Sistema Inteligente de Monitoreo Ambiental mediante IoT
 
 **Universidad de San Carlos de Guatemala**  
 **Facultad de Ingeniería**  
