@@ -1,4 +1,4 @@
-# 🌐 Proyecto - Sistema Inteligente de Monitoreo Ambiental mediante IoT
+# 🌐 [Proyecto - Sistema Inteligente de Monitoreo Ambiental mediante IoT](https://youtu.be/CxrAFukMnrM)
 
 **Universidad de San Carlos de Guatemala**  
 **Facultad de Ingeniería**  
@@ -10,6 +10,8 @@
 ## 📌 Descripción del Proyecto
 
 Este proyecto propone el desarrollo de un sistema inteligente de monitoreo ambiental orientado a cuartos de servidores, utilizando tecnologías de IoT para garantizar condiciones óptimas en estos espacios críticos. El sistema recolecta datos ambientales en tiempo real mediante sensores, y emplea procesamiento, análisis y visualización de información para alertar sobre posibles anomalías que puedan comprometer el funcionamiento del hardware.
+
+📽️ Enlace al Video Presentación del Proyecto: https://youtu.be/CxrAFukMnrM
 
 ### 🔍 Características Principales:
 - Medición de temperatura, humedad, calidad del aire, luz y corriente eléctrica.
