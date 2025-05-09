@@ -35,7 +35,7 @@ El sistema está basado en una arquitectura de 5 capas del IoT Stack Framework:
 |----------------------------------|-------------------------------------------------------|  
 | Angel Samuel González Velásquez  | [Fercho9134](https://github.com/Fercho9134)           |  
 | Irving Fernando Alvarado Asensio | [AngelSGonza2107](https://github.com/AngelSGonza2107) |  
-| Adler Alejandro Pérez Asensio    | [-]                                                   |  
+| Adler Alejandro Pérez Asensio    | -                                                     |  
 | Andrés Alejandro Quezada Cabrera | [MrQS94](https://github.com/MrQS94)                   |
 
 ---
