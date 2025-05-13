@@ -63,6 +63,12 @@ El proyecto se ha dividido en 3 fases, cada una organizada en su propia carpeta.
   </ul>
 </details>
 
+Para obtener más detalles sobre las API's y el Frontend del proyecto, visita estos repositorios:
+1. 🎨 [`Frontend`/`Dashboard` del proyecto](https://github.com/Fercho9134/dashboard-monitoreo-datacenter)
+2. 🙃 [`API` para el reconocimiento facial](https://github.com/Fercho9134/api-reconocimiento-facial)
+3. 🧾 [`API` para la recolección de datos históricos](https://github.com/Fercho9134/api-historicos)
+4. 🗄️ [Suscriptor a la Base de Datos `Firebase`](https://github.com/Fercho9134/bd-suscriber)
+
 ---
 
 ## 📌 Nota
